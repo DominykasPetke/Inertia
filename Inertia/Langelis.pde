@@ -25,6 +25,6 @@ class Langelis {
     default: 
       break;
     }
-    rect(x, y, 20, 20);
+    rect(x, y, squareSize, squareSize);
   }
 }
