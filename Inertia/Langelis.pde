@@ -11,7 +11,7 @@ class Langelis {
     switch (type) { 
     case 0:
       fill(255, 0, 0);   
-      ellipse(x+squareSize/2, y+squareSize/2, 15, 15);
+      ellipse(x+squareSize/2, y+squareSize/2, squareSize/2-squareSize/50, squareSize/2-squareSize/50);
       break;
     case 1:
       fill(0, 255, 0);
