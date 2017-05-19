@@ -4,14 +4,18 @@ class Langelis {
   Langelis() {
     type = int(random(0, 4));
   }
-
+  
   void draw(int x, int y) {
+    fill(254); 
+    rect(x, y, squareSize, squareSize);
     switch (type) { 
     case 0:
-      fill(255, 0, 0);
+      fill(255, 0, 0);   
+      ellipse(x+10, y+10, 15, 15);
       break;
     case 1:
       fill(0, 255, 0);
+      
       break;
     case 2:
       fill(0, 0, 255);
@@ -26,6 +30,6 @@ class Langelis {
     fill(0);
       break;
     }
-    rect(x, y, squareSize, squareSize);
+
   }
 }
