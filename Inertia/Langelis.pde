@@ -3,7 +3,7 @@ class Langelis {
   int x, y;
 
   Langelis(int x, int y) {
-    type = int(random(0, 4.99));
+    type = int(random(5));
     this.x = x;
     this.y = y;
   }

@@ -6,6 +6,7 @@ color backgroundColor = color(200);
 int posX, posY;
 
 Langelis lenta[][] = new Langelis[sizeX][sizeY];
+Player player;
 
 void setup() {
   size(1, 1);
@@ -18,6 +19,8 @@ void setup() {
       lenta[i][j] = new Langelis(i, j);
     }
   }
+  
+  player = new Player();
 }
 
 void draw() {
@@ -28,4 +31,6 @@ void draw() {
       lenta[i][j].draw();
     }
   }
+  
+  player.draw();
 }
