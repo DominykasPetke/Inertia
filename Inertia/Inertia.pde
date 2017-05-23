@@ -8,22 +8,21 @@ int posX, posY;
 Langelis lenta[][] = new Langelis[sizeX][sizeY];
 
 void setup() {
-  size(1,1);
+  size(1, 1);
   surface.setResizable(true);                  // nustatom lango dydi
   surface.setSize(squareSize*sizeX+distanceFromEdge*2, squareSize*sizeY+distanceFromEdge*2);
   surface.setResizable(false);
-  
+
   for (int i = 0; i < sizeX; i++) {
     for (int j = 0; j < sizeY; j++) {
       lenta[i][j] = new Langelis(i, j);
     }
   }
-  
 }
 
 void draw() {
   background(backgroundColor);
-  
+
   for (int i = 0; i < sizeX; i++) {
     for (int j = 0; j < sizeY; j++) {
       lenta[i][j].draw();

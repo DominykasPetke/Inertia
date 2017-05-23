@@ -7,7 +7,7 @@ class Langelis {
     this.x = x;
     this.y = y;
   }
-  
+
   void draw() {
     int posX = x*squareSize+distanceFromEdge;
     int posY = y*squareSize+distanceFromEdge;
@@ -38,9 +38,8 @@ class Langelis {
       ellipse(posX+squareSize/2, posY+squareSize/2, squareSize/2, squareSize/2);
       break;
     default: 
-    fill(0);
+      fill(0);
       break;
     }
-
   }
 }
