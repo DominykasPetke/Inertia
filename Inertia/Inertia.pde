@@ -14,19 +14,19 @@ void setup() {
   surface.setSize(squareSize*sizeX+distanceFromEdge*2, squareSize*sizeY+distanceFromEdge*2);
   surface.setResizable(false);
 
-  for (int i = 0; i < sizeX; i++) {
+  for (int i = 0; i < sizeX; i++) {   // generuojam lenta
     for (int j = 0; j < sizeY; j++) {
       lenta[i][j] = new Langelis(i, j);
     }
   }
 
-  player = new Player();
+  player = new Player();  // generuojam zaideja
 }
 
 void draw() {
   background(backgroundColor);
 
-  if (player.isAlive) { 
+  if (player.isAlive) {   // jei gyvas
     for (int i = 0; i < sizeX; i++) {
       for (int j = 0; j < sizeY; j++) {
         lenta[i][j].draw();

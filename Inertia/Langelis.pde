@@ -13,31 +13,31 @@ class Langelis {
     int posY = y*squareSize+distanceFromEdge;
     fill(255); 
     switch (type) { 
-    case 0:  
+    case 0:  // tuscias laukelis
       rect(posX, posY, squareSize, squareSize);
       break;
-    case 1:
+    case 1:   // deimantas
       rect(posX, posY, squareSize, squareSize);
       fill(100, 100, 160);
       ellipse(posX+squareSize/2, posY+squareSize/2, squareSize/2, squareSize/2);
       break;
-    case 2:
+    case 2:  // siena
       fill(0);
       rect(posX, posY, squareSize, squareSize);
       fill(160);
       rect(posX+2, posY+2, squareSize-4, squareSize-4);
       break;
-    case 3:
+    case 3:  // "STOP"
       rect(posX, posY, squareSize, squareSize);
       noFill();
       ellipse(posX+squareSize/2, posY+squareSize/2, squareSize/2, squareSize/2);
       break;
-    case 4:
+    case 4: // mina
       rect(posX, posY, squareSize, squareSize);
       fill(255, 0, 0);
       ellipse(posX+squareSize/2, posY+squareSize/2, squareSize/2, squareSize/2);
       break;
-    default: 
+    default:  // nieko
       fill(0);
       break;
     }
