@@ -2,7 +2,7 @@ class Langelis {
   int type;
 
   Langelis() {
-    type = int(random(0, 4));
+    type = int(random(0, 4.99));
   }
   
   void draw(int x, int y) {
@@ -15,7 +15,6 @@ class Langelis {
       break;
     case 1:
       fill(0, 255, 0);
-      
       break;
     case 2:
       fill(0, 0, 255);
