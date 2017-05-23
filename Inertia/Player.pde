@@ -68,8 +68,6 @@ class Player { //<>//
           break movement; 
         case 4:  // jei mina
           isAlive = false;
-          x--;
-          y++;
           break movement;
         default:
           break movement;
