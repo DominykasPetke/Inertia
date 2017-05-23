@@ -7,17 +7,20 @@ class Langelis {
   
   void draw(int x, int y) {
     fill(254); 
-    rect(x, y, squareSize, squareSize);
     switch (type) { 
-    case 0:
-      fill(255, 0, 0);   
-      ellipse(x+squareSize/2, y+squareSize/2, squareSize/2-squareSize/50, squareSize/2-squareSize/50);
+    case 0:  
+      rect(x, y, squareSize, squareSize);
       break;
     case 1:
-      fill(0, 255, 0);
+      rect(x, y, squareSize, squareSize);
+      fill(100, 100, 160);
+      ellipse(x+squareSize/2, y+squareSize/2, squareSize/2, squareSize/2);
       break;
     case 2:
-      fill(0, 0, 255);
+      fill(0);
+      rect(x, y, squareSize, squareSize);
+      fill(160);
+      rect(x+2, y+2, squareSize-4, squareSize-4);
       break;
     case 3:
       fill(255, 255, 0);
