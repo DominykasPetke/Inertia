@@ -1,5 +1,5 @@
-int sizeX = 8;
-int sizeY = 6;
+int sizeX = 30; //<>//
+int sizeY = 20;
 int squareSize = 40;
 int distanceFromEdge = 20;
 color backgroundColor = color(200);
@@ -19,18 +19,60 @@ void setup() {
       lenta[i][j] = new Langelis(i, j);
     }
   }
-  
+
   player = new Player();
 }
 
 void draw() {
   background(backgroundColor);
 
-  for (int i = 0; i < sizeX; i++) {
-    for (int j = 0; j < sizeY; j++) {
-      lenta[i][j].draw();
+  if (player.isAlive) { 
+    for (int i = 0; i < sizeX; i++) {
+      for (int j = 0; j < sizeY; j++) {
+        lenta[i][j].draw();
+      }
     }
+
+    player.draw();
+  } else {
+    fill(0);
+    text("Press R to restart", squareSize*2+distanceFromEdge, squareSize*2+distanceFromEdge);
   }
-  
-  player.draw();
+}
+
+void keyPressed () {  // numpad PLS
+  switch(key) {
+  case '1': 
+    player.move1();
+    break;
+  case '2': 
+    player.move2();
+    break;
+  case '3': 
+    player.move3();
+    break;
+  case '4': 
+    player.move4();
+    break;
+  case '6': 
+    player.move6();
+    break;
+  case '7': 
+    player.move7();
+    break;
+  case '8': 
+    player.move8();
+    break;
+  case '9': 
+    player.move9();
+    break;
+  case 'R': 
+    setup();
+    break; 
+  case 'r': 
+    setup(); 
+    break;
+  default: 
+    break;
+  }
 }
