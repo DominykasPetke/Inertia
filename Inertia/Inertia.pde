@@ -34,6 +34,9 @@ void draw() {
     }
 
     player.draw();
+
+    fill(0);
+    text(player.gemsLeft, distanceFromEdge-1, distanceFromEdge);
   } else {
     fill(0);
     text("Press R to restart", squareSize*2+distanceFromEdge, squareSize*2+distanceFromEdge);
@@ -75,4 +78,18 @@ void keyPressed () {  // numpad PLS
   default: 
     break;
   }
+}
+
+boolean isStopSpot (int x, int y) {   // ar galima cia pradeti zaidima
+  if (lenta[x][y].type == 3) {
+    return true;
+  }
+  return false;
+}
+
+boolean isGem(int x, int y) {   // ar deimantas
+  if (lenta[x][y].type == 1) {
+    return true;
+  }
+  return false;
 }

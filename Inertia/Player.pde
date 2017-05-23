@@ -9,7 +9,7 @@ class Player { //<>//
 
     for (int i = 0; i < sizeX; i++) {   // nustatom, kur galim pradeti ir kiek yra deimantu
       for (int j = 0; j < sizeY; j++) {
-        if (isValidPosition(i, j)) {
+        if (isStopSpot(i, j)) {
           coords[count] = new int[]{i, j};
           count++;
         }
@@ -24,20 +24,6 @@ class Player { //<>//
     y = coords[choice][1];
 
     isAlive = true;     // pradzioje gyvi
-  }
-
-  boolean isValidPosition (int x, int y) {   // ar galima cia pradeti zaidima
-    if (lenta[x][y].type == 3) {
-      return true;
-    }
-    return false;
-  }
-
-  boolean isGem(int x, int y) {   // ar deimantas
-    if (lenta[x][y].type == 1) {
-      return true;
-    }
-    return false;
   }
 
   void draw() {   // piesiam zaideja
