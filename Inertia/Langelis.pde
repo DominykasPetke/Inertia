@@ -1,35 +1,46 @@
 class Langelis {
   int type;
+  int x, y;
 
-  Langelis() {
-    type = int(random(0, 4));
+  Langelis(int x, int y) {
+    type = int(random(5));
+    this.x = x;
+    this.y = y;
   }
-  
-  void draw(int x, int y) {
-    fill(254); 
-    rect(x, y, squareSize, squareSize);
+
+  void draw() {
+    int posX = x*squareSize+distanceFromEdge;
+    int posY = y*squareSize+distanceFromEdge;
+    int halfSize = squareSize/2;
+    fill(255); 
     switch (type) { 
-    case 0:
-      fill(255, 0, 0);   
-      ellipse(x+10, y+10, 15, 15);
+    case 0:  // tuscias laukelis
+      rect(posX, posY, squareSize, squareSize);
       break;
-    case 1:
-      fill(0, 255, 0);
-      
+    case 1:   // deimantas
+      rect(posX, posY, squareSize, squareSize);
+      fill(0, 180, 250);
+      quad(posX+halfSize, posY+6, posX+10, posY+halfSize, posX+halfSize, posY+halfSize+halfSize-6, posX+halfSize+halfSize-10, posY+halfSize);
       break;
-    case 2:
-      fill(0, 0, 255);
+    case 2:  // siena
+      fill(0);
+      rect(posX, posY, squareSize, squareSize);
+      fill(160);
+      rect(posX+2, posY+2, squareSize-4, squareSize-4);
       break;
-    case 3:
-      fill(255, 255, 0);
+    case 3:  // "STOP"
+      rect(posX, posY, squareSize, squareSize);
+      noFill();
+      ellipse(posX+halfSize, posY+halfSize, halfSize, halfSize);
       break;
-    case 4:
-      fill(255, 0, 255);
+    case 4: // mina
+      rect(posX, posY, squareSize, squareSize);
+      fill(0, 0, 0);
+      ellipse(posX+halfSize, posY+halfSize, halfSize, halfSize);
       break;
-    default: 
-    fill(0);
+    default:  // nieko
+      fill(0);
       break;
     }
-
   }
 }
