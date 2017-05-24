@@ -1,6 +1,6 @@
-int sizeX = 20; //<>//
+int sizeX = 20;
 int sizeY = 15;
-int squareSize = 40;
+int squareSize = 20;
 int distanceFromEdge = 20;
 color backgroundColor = color(200);
 int posX, posY;
@@ -28,7 +28,7 @@ void draw() {
 
   if (player.isAlive) {   // jei gyvas
     for (int i = 0; i < sizeX; i++) {
-      for (int j = 0; j < sizeY; j++) {
+      for (int j = 0; j < sizeY; j++) { //<>//
         lenta[i][j].draw();
       }
     }
