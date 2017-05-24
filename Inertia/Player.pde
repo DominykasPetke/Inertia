@@ -1,27 +1,19 @@
-class Player { //<>//
+class Player { //<>// //<>//
   int x, y;
   int gemsLeft;
   boolean isAlive;
 
-  Player() {
-    int[][] coords = new int[sizeX*sizeY][2];
-    int count = 0;
-
-    for (int i = 0; i < sizeX; i++) {   // nustatom, kur galim pradeti ir kiek yra deimantu
+  Player(int tempX, int tempY) {
+    for (int i = 0; i < sizeX; i++) {   // nustatom, kiek yra deimantu
       for (int j = 0; j < sizeY; j++) {
-        if (isStopSpot(i, j)) {
-          coords[count] = new int[]{i, j};
-          count++;
-        }
         if (isGem(i, j)) {
           gemsLeft++;
         }
       }
     }
 
-    int choice = int(random(count));  // parenkam starto vieta
-    x = coords[choice][0];
-    y = coords[choice][1];
+    x = tempX;
+    y = tempY;
 
     isAlive = true;     // pradzioje gyvi
   }
@@ -54,6 +46,8 @@ class Player { //<>//
           break movement; 
         case 4:  // jei mina
           isAlive = false;
+          x--; 
+          y++; 
           break movement;
         default:
           break movement;
@@ -84,6 +78,7 @@ class Player { //<>//
           break movement; 
         case 4:  // jei mina
           isAlive = false;
+          y++;
           break movement;
         default:
           break movement;
@@ -116,6 +111,8 @@ class Player { //<>//
           y++; 
           break movement; 
         case 4:  // jei mina
+          x++;
+          y++;
           isAlive = false;
           break movement;
         default:
@@ -146,6 +143,7 @@ class Player { //<>//
           x--; 
           break movement; 
         case 4:  // jei mina
+          x--;
           isAlive = false;
           break movement;
         default:
@@ -176,6 +174,7 @@ class Player { //<>//
           x++; 
           break movement; 
         case 4:  // jei mina
+          x++;
           isAlive = false;
           break movement;
         default:
@@ -209,6 +208,8 @@ class Player { //<>//
           y--; 
           break movement; 
         case 4:  // jei mina
+          x--;
+          y--;
           isAlive = false;
           break movement;
         default:
@@ -239,6 +240,7 @@ class Player { //<>//
           y--; 
           break movement; 
         case 4:  // jei mina
+          y--;
           isAlive = false;
           break movement;
         default:
@@ -273,6 +275,8 @@ class Player { //<>//
           break movement; 
         case 4:  // jei mina
           isAlive = false;
+          x++;
+          y--;
           break movement;
         default:
           break movement;
