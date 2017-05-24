@@ -28,7 +28,7 @@ void setup() {
     }
 
     int[][] legalStartSpots = new int [spotsCount][];
-    int legalSpotsCount = 0; //<>// //<>//
+    int legalSpotsCount = 0; //<>//
 
     for (int i = 0; i < spotsCount; i++) {
       if (isStartSpot(possibleStartSpots[i][0], possibleStartSpots[i][1])) {
@@ -59,7 +59,7 @@ void draw() {
   textSize(12);
   text(player.gemsLeft, distanceFromEdge, distanceFromEdge-1);
   if (!player.isAlive) {   // jei gyvas
-    text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge);
+    text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge-1);
     fill(255, 0, 0);
     textSize(squareSize*1.3);
     text("X", player.x*squareSize+distanceFromEdge, (player.y+1)*squareSize+distanceFromEdge);
