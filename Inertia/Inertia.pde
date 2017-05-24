@@ -28,7 +28,7 @@ void setup() {
     }
 
     int[][] legalStartSpots = new int [spotsCount][];
-    int legalSpotsCount = 0;
+    int legalSpotsCount = 0; //<>//
 
     for (int i = 0; i < spotsCount; i++) {
       if (isStartSpot(possibleStartSpots[i][0], possibleStartSpots[i][1])) {
@@ -53,12 +53,12 @@ void draw() {
       lenta[i][j].draw();
     }
   }
-  
+
   player.draw();
   fill(0);
   textSize(12);
   text(player.gemsLeft, distanceFromEdge, distanceFromEdge-1);
-  
+
   if (!player.isAlive) {   // jei negyvas
     text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge-1);
     fill(255, 0, 0);
@@ -70,28 +70,44 @@ void draw() {
 void keyPressed () {  // numpad PLS
   switch(key) {
   case '1': 
-    player.move1();
+    if (player.isAlive) {
+      player.move1();
+    }
     break;
   case '2': 
-    player.move2();
+    if (player.isAlive) {
+      player.move2();
+    }
     break;
   case '3': 
-    player.move3();
+    if (player.isAlive) {
+      player.move3();
+    }
     break;
-  case '4': 
-    player.move4();
+  case '4':
+    if (player.isAlive) {
+      player.move4();
+    }
     break;
   case '6': 
-    player.move6();
+    if (player.isAlive) {
+      player.move6();
+    }
     break;
   case '7': 
-    player.move7();
+    if (player.isAlive) {
+      player.move7();
+    }
     break;
   case '8': 
-    player.move8();
+    if (player.isAlive) {
+      player.move8();
+    }
     break;
   case '9': 
-    player.move9();
+    if (player.isAlive) {
+      player.move9();
+    }
     break;
   case 'R': 
     setup();
