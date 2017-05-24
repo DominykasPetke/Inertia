@@ -1,5 +1,5 @@
-int sizeX = 30; //<>//
-int sizeY = 20;
+int sizeX = 20; //<>//
+int sizeY = 15;
 int squareSize = 40;
 int distanceFromEdge = 20;
 color backgroundColor = color(200);
