@@ -1,4 +1,4 @@
-class Player { //<>//
+class Player { //<>// //<>//
   int x, y;
   int gemsLeft;
   boolean isAlive;
@@ -46,6 +46,8 @@ class Player { //<>//
           break movement; 
         case 4:  // jei mina
           isAlive = false;
+          x--; 
+          y++; 
           break movement;
         default:
           break movement;
@@ -76,6 +78,7 @@ class Player { //<>//
           break movement; 
         case 4:  // jei mina
           isAlive = false;
+          y++;
           break movement;
         default:
           break movement;
@@ -108,6 +111,8 @@ class Player { //<>//
           y++; 
           break movement; 
         case 4:  // jei mina
+          x++;
+          y++;
           isAlive = false;
           break movement;
         default:
@@ -138,6 +143,7 @@ class Player { //<>//
           x--; 
           break movement; 
         case 4:  // jei mina
+          x--;
           isAlive = false;
           break movement;
         default:
@@ -168,6 +174,7 @@ class Player { //<>//
           x++; 
           break movement; 
         case 4:  // jei mina
+          x++;
           isAlive = false;
           break movement;
         default:
@@ -201,6 +208,8 @@ class Player { //<>//
           y--; 
           break movement; 
         case 4:  // jei mina
+          x--;
+          y--;
           isAlive = false;
           break movement;
         default:
@@ -231,6 +240,7 @@ class Player { //<>//
           y--; 
           break movement; 
         case 4:  // jei mina
+          y--;
           isAlive = false;
           break movement;
         default:
@@ -265,6 +275,8 @@ class Player { //<>//
           break movement; 
         case 4:  // jei mina
           isAlive = false;
+          x++;
+          y--;
           break movement;
         default:
           break movement;

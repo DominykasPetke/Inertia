@@ -1,6 +1,6 @@
 int sizeX = 20;
 int sizeY = 15;
-int squareSize = 40;
+int squareSize = 60;
 int distanceFromEdge = 20;
 color backgroundColor = color(200);
 
@@ -28,7 +28,7 @@ void setup() {
     }
 
     int[][] legalStartSpots = new int [spotsCount][];
-    int legalSpotsCount = 0; //<>//
+    int legalSpotsCount = 0; //<>// //<>//
 
     for (int i = 0; i < spotsCount; i++) {
       if (isStartSpot(possibleStartSpots[i][0], possibleStartSpots[i][1])) {
@@ -48,20 +48,22 @@ void setup() {
 void draw() {
   background(backgroundColor);
 
-  if (player.isAlive) {   // jei gyvas
-    for (int i = 0; i < sizeX; i++) {
-      for (int j = 0; j < sizeY; j++) {
-        lenta[i][j].draw();
-      }
+
+  for (int i = 0; i < sizeX; i++) {
+    for (int j = 0; j < sizeY; j++) {
+      lenta[i][j].draw();
     }
-
-    player.draw();
-
-    fill(0);
-    text(player.gemsLeft, distanceFromEdge-1, distanceFromEdge);
-  } else {
-    fill(0);
-    text("Press R to restart", squareSize*2+distanceFromEdge, squareSize*2+distanceFromEdge);
+  }
+  
+  player.draw();
+  fill(0);
+  textSize(12);
+  text(player.gemsLeft, distanceFromEdge, distanceFromEdge-1);
+  if (!player.isAlive) {   // jei gyvas
+    text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge);
+    fill(255, 0, 0);
+    textSize(squareSize*1.3);
+    text("X", player.x*squareSize+distanceFromEdge, (player.y+1)*squareSize+distanceFromEdge);
   }
 }
 
