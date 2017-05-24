@@ -13,7 +13,7 @@ class Langelis {
     int posY = y*squareSize+distanceFromEdge;
     int halfSize = squareSize/2;
     fill(255);
-    
+
     switch (type) { 
     case 0:  // tuscias laukelis
       rect(posX, posY, squareSize, squareSize);

@@ -1,4 +1,4 @@
-int sizeX = 20;
+int sizeX = 20; //<>//
 int sizeY = 15;
 int squareSize = 40;
 int distanceFromEdge = 20;
@@ -15,25 +15,21 @@ void setup() {
   boolean tryAgain = true;
 
   while (tryAgain) {
-    int[][] possibleStartSpots = new int [sizeX*sizeY][];
-    int spotsCount = 0;
     for (int i = 0; i < sizeX; i++) {   // generuojam lenta
       for (int j = 0; j < sizeY; j++) {
         lenta[i][j] = new Langelis(i, j);
-        if (lenta[i][j].type == 3) {
-          possibleStartSpots[spotsCount] = new int []{i, j};
-          spotsCount++;
-        }
       }
     }
 
-    int[][] legalStartSpots = new int [spotsCount][];
-    int legalSpotsCount = 0; //<>//
+    int[][] legalStartSpots = new int [sizeX*sizeY][];
+    int legalSpotsCount = 0;
 
-    for (int i = 0; i < spotsCount; i++) {
-      if (isStartSpot(possibleStartSpots[i][0], possibleStartSpots[i][1])) {
-        legalStartSpots[legalSpotsCount] = possibleStartSpots[i];
-        legalSpotsCount++;
+    for (int i = 0; i < sizeX; i++) {
+      for (int j = 0; j < sizeY; j++) {
+        if (isStartSpot(i, j)) {
+          legalStartSpots[legalSpotsCount] = new int[] {i, j};
+          legalSpotsCount++;
+        }
       }
     }
 
@@ -64,8 +60,7 @@ void draw() {
     fill(255, 0, 0);
     textSize(squareSize*1.3);
     text("X", player.x*squareSize+distanceFromEdge, (player.y+1)*squareSize+distanceFromEdge);
-  }
-  else if (player.gemsLeft == 0) {
+  } else if (player.gemsLeft == 0) {
     background(0, 255, 0);
     text("You win!", distanceFromEdge+squareSize, distanceFromEdge-1);
     text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge+squareSize);
