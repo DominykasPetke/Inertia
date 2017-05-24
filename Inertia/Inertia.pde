@@ -1,6 +1,6 @@
 int sizeX = 20;
 int sizeY = 15;
-int squareSize = 60;
+int squareSize = 40;
 int distanceFromEdge = 20;
 color backgroundColor = color(200);
 
@@ -47,7 +47,6 @@ void setup() {
 
 void draw() {
   background(backgroundColor);
-
 
   for (int i = 0; i < sizeX; i++) {
     for (int j = 0; j < sizeY; j++) {

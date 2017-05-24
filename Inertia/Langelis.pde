@@ -20,8 +20,8 @@ class Langelis {
       break;
     case 1:   // deimantas
       rect(posX, posY, squareSize, squareSize);
-      fill(100, 100, 160);
-      ellipse(posX+halfSize, posY+halfSize, halfSize, halfSize);
+      fill(0, 180, 250);
+      quad(posX+halfSize, posY+6, posX+10, posY+halfSize, posX+halfSize, posY+halfSize+halfSize-6, posX+halfSize+halfSize-10, posY+halfSize);
       break;
     case 2:  // siena
       fill(0);
@@ -36,7 +36,7 @@ class Langelis {
       break;
     case 4: // mina
       rect(posX, posY, squareSize, squareSize);
-      fill(255, 0, 0);
+      fill(0, 0, 0);
       ellipse(posX+halfSize, posY+halfSize, halfSize, halfSize);
       break;
     default:  // nieko
