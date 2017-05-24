@@ -1,8 +1,6 @@
 boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>//
   Langelis original[][] = new Langelis[sizeX][sizeY]; //<>//
 
-  cloneMatrix(lenta, original);
-
   int[][] gemList = new int[sizeX*sizeY][];
   int gemCount = 0;
 
@@ -63,7 +61,6 @@ boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>//
       if (klonas.isAlive) {
         for (int j = 0; j < gemCount; j++) {
           if (lenta[gemList[j][0]][gemList[j][1]].type != 1) {
-            lenta[gemList[j][0]][gemList[j][1]].type = 1;
             isReachable[j] = true;
           }
         }
@@ -73,12 +70,15 @@ boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>//
           members++;
         }
       }
+      
+      for (int j = 0; j < gemCount; j++) {
+        lenta[gemList[j][0]][gemList[j][1]].type = 1;
+      }
     }
 
     membersUsed++;
   }
 
-  cloneMatrix(original, lenta);
   for (int i = 0; i < gemCount; i++) {
     if (!isReachable[i]) {
       return false;
@@ -86,16 +86,6 @@ boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>//
   }
 
   return true;
-}
-
-void cloneMatrix (Langelis from[][], Langelis to[][]) {
-  if (from != to) {
-    for (int i = 0; i < sizeX; i++) {
-      for (int j = 0; j < sizeY; j++) {
-        to[i][j] = from[i][j];
-      }
-    }
-  }
 }
 
 boolean isInMatrix(int x, int y, int where[][], int members) {
