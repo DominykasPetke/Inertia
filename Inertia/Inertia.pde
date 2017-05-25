@@ -1,7 +1,7 @@
-int sizeX = 20; //<>//
-int sizeY = 15;
-int squareSize = 40;
-int distanceFromEdge = 20;
+int sizeX = 70; //<>//
+int sizeY = 40;
+int squareSize = 20;
+int distanceFromEdge = 5;
 color backgroundColor = color(200);
 
 Langelis lenta[][] = new Langelis[sizeX][sizeY];
@@ -52,13 +52,13 @@ void draw() {
 
   player.draw();
   fill(0);
-  textSize(12);
+  textSize(distanceFromEdge);
   text(player.gemsLeft, distanceFromEdge, distanceFromEdge-1);
 
   if (!player.isAlive) {   // jei negyvas
     text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge-1);
     fill(255, 0, 0);
-    textSize(squareSize*1.3);
+    textSize(squareSize*1.33);
     text("X", player.x*squareSize+distanceFromEdge, (player.y+1)*squareSize+distanceFromEdge);
   } else if (player.gemsLeft == 0) {
     background(0, 255, 0);
@@ -70,43 +70,43 @@ void draw() {
 void keyPressed () {  // numpad PLS
   switch(key) {
   case '1': 
-    if (player.isAlive) {
-      player.move1();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(-1, 1);
     }
     break;
   case '2': 
-    if (player.isAlive) {
-      player.move2();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(0, 1);
     }
     break;
   case '3': 
-    if (player.isAlive) {
-      player.move3();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(1, 1);
     }
     break;
   case '4':
-    if (player.isAlive) {
-      player.move4();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(-1, 0);
     }
     break;
   case '6': 
-    if (player.isAlive) {
-      player.move6();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(1, 0);
     }
     break;
   case '7': 
-    if (player.isAlive) {
-      player.move7();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(-1, -1);
     }
     break;
   case '8': 
-    if (player.isAlive) {
-      player.move8();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(0, -1);
     }
     break;
   case '9': 
-    if (player.isAlive) {
-      player.move9();
+    if (player.isAlive && player.gemsLeft != 0) {
+      player.move(1, -1);
     }
     break;
   case 'R': 

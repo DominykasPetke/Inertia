@@ -1,4 +1,4 @@
-boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>// //<>// //<>// //<>// //<>//
+boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>//
   if (lenta[x][y].type != 3) {
     return false;
   }
@@ -30,28 +30,28 @@ boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>// /
 
       switch(i) {
       case 1: 
-        klonas.move1();
+        klonas.move(-1, 1);
         break;
       case 2: 
-        klonas.move2();
+        klonas.move(0, 1);
         break;
       case 3: 
-        klonas.move3();
+        klonas.move(1, 1);
         break;
       case 4: 
-        klonas.move4();
+        klonas.move(-1, 0);
         break;
       case 5: 
-        klonas.move6();
+        klonas.move(1, 0);
         break;
       case 6: 
-        klonas.move7();
+        klonas.move(-1, -1);
         break;
       case 7: 
-        klonas.move8();
+        klonas.move(0, -1);
         break;
       case 8:
-        klonas.move9();
+        klonas.move(1, -1);
         break;
       default: 
         break;
