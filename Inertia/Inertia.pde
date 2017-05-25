@@ -1,7 +1,7 @@
-int sizeX = 70; //<>//
-int sizeY = 40;
-int squareSize = 20;
-int distanceFromEdge = 5;
+int sizeX = 20; //<>//
+int sizeY = 15;
+int squareSize = 40;
+int distanceFromEdge = 15;
 color backgroundColor = color(200);
 
 Langelis lenta[][] = new Langelis[sizeX][sizeY];
