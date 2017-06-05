@@ -34,9 +34,11 @@ void setup() {
     }
 
     if (legalSpotsCount > 0) {
-      tryAgain = false;
       int choice = int(random(legalSpotsCount));
       player = new Player(legalStartSpots[choice][0], legalStartSpots[choice][1]);  // generuojam zaideja
+      if (player.gemsLeft > 0) {
+        tryAgain = false;
+      }
     }
   }
 }
@@ -52,7 +54,7 @@ void draw() {
 
   player.draw();
   fill(0);
-  textSize(distanceFromEdge);
+  textSize(distanceFromEdge*0.75);
   text(player.gemsLeft, distanceFromEdge, distanceFromEdge-1);
 
   if (!player.isAlive) {   // jei negyvas
@@ -60,7 +62,7 @@ void draw() {
     fill(255, 0, 0);
     textSize(squareSize*1.33);
     text("X", player.x*squareSize+distanceFromEdge, (player.y+1)*squareSize+distanceFromEdge);
-  } else if (player.gemsLeft == 0) {
+  } else if (player.gemsLeft == 0) {   // jei laimejom
     background(0, 255, 0);
     text("You win!", distanceFromEdge+squareSize, distanceFromEdge-1);
     text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge+squareSize);
@@ -118,11 +120,4 @@ void keyPressed () {  // numpad PLS
   default: 
     break;
   }
-}
-
-boolean isGem(int x, int y) {   // ar deimantas
-  if (lenta[x][y].type == 1) {
-    return true;
-  }
-  return false;
 }

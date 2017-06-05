@@ -6,7 +6,7 @@ class Player { //<>//
   Player(int tempX, int tempY) {
     for (int i = 0; i < sizeX; i++) {   // nustatom, kiek yra deimantu //<>//
       for (int j = 0; j < sizeY; j++) {
-        if (isGem(i, j)) {
+        if (lenta[i][j].type == 1) {
           gemsLeft++;
         }
       }

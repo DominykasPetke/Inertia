@@ -8,10 +8,8 @@ boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>//
 
   for (int i = 0; i < sizeX; i++) {
     for (int j = 0; j < sizeY; j++) {
-      if (isGem(i, j)) {
-        gemList[gemCount] = new int[] {
-          i, j
-        };
+      if (lenta[i][j].type  == 1) {
+        gemList[gemCount] = new int[] {i, j};
         gemCount++;
       }
     }
