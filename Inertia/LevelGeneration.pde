@@ -1,4 +1,4 @@
-void generateLevel() {
+void generateLevel() { //<>//
   boolean tryAgain = true;
   lenta = new Langelis[sizeX][sizeY];
 
@@ -29,6 +29,6 @@ void generateLevel() {
       }
     }
   }
-  
+
   isGenerated = true;
 }

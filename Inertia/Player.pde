@@ -1,10 +1,11 @@
-class Player { //<>//
+class Player { //<>// //<>//
   int x, y;
   int gemsLeft;
+  int moves;
   boolean isAlive;
 
   Player(int tempX, int tempY) {
-    for (int i = 0; i < sizeX; i++) {   // nustatom, kiek yra deimantu //<>//
+    for (int i = 0; i < sizeX; i++) {   // nustatom, kiek yra deimantu
       for (int j = 0; j < sizeY; j++) {
         if (lenta[i][j].type == 1) {
           gemsLeft++;
@@ -16,6 +17,7 @@ class Player { //<>//
     y = tempY;
 
     isAlive = true;     // pradzioje gyvi
+    moves = 0;
   }
 
   void draw() {   // piesiam zaideja
@@ -58,5 +60,6 @@ class Player { //<>//
         break movement;
       }
     }
+    moves++;
   }
 }
