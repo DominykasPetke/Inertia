@@ -1,4 +1,4 @@
-boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima //<>//
+boolean isStartSpot (int x, int y) {   // ar galima cia pradeti zaidima
   if (lenta[x][y].type != 3) {
     return false;
   }
