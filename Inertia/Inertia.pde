@@ -73,8 +73,8 @@ void draw() {
       text("X", player.x*squareSize+distanceFromEdge, (player.y+1)*squareSize+distanceFromEdge);
     } else if (player.gemsLeft == 0) {   // jei laimejom
       background(0, 255, 0);
-      text("You win!", distanceFromEdge+squareSize, distanceFromEdge-1);
-      text("Press R to restart", distanceFromEdge+squareSize, distanceFromEdge+squareSize);
+      textSize(14);
+      text("You win!\nBoard size: " + sizeX + "x" + sizeY +"\nMoves made: " + player.moves + "\nPress R to play again", distanceFromEdge, distanceFromEdge);
     }
   }
 }
