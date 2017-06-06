@@ -1,10 +1,10 @@
-class Player {
+class Player { //<>//
   int x, y;
   int gemsLeft;
   boolean isAlive;
 
   Player(int tempX, int tempY) {
-    for (int i = 0; i < sizeX; i++) {   // nustatom, kiek yra deimantu
+    for (int i = 0; i < sizeX; i++) {   // nustatom, kiek yra deimantu //<>//
       for (int j = 0; j < sizeY; j++) {
         if (lenta[i][j].type == 1) {
           gemsLeft++;
@@ -29,7 +29,7 @@ class Player {
       int newX = x + moveX;
       int newY = y + moveY;
       if (newX >= 0 && newX < sizeX && newY >= 0 && newY < sizeY) {
-        switch(lenta[newX][newY].type) {
+        switch(lenta[newX][newY].type) {  // kas yra ten, kur eisim?
         case 0:    // jei nieko nera
           x = newX;
           y = newY;

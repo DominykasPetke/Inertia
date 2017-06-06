@@ -2,10 +2,10 @@ class Langelis {
   int type;
   int x, y;
 
-  Langelis(int x, int y) {
-    type = int(random(5));
-    this.x = x;
-    this.y = y;
+  Langelis(int tempX, int tempY) {
+    type = int(random(6));
+    x = tempX;
+    y = tempY;
   }
 
   void draw() {
@@ -40,7 +40,6 @@ class Langelis {
       ellipse(posX+halfSize, posY+halfSize, halfSize, halfSize);
       break;
     default:  // nieko
-      fill(0);
       break;
     }
   }
