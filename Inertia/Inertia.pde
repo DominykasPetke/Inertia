@@ -1,4 +1,4 @@
-import controlP5.*; //<>// //<>//
+import controlP5.*;
 
 ControlP5 cp5;
 
@@ -8,6 +8,9 @@ int squareSize;
 int distanceFromEdge;
 color backgroundColor = color(200);
 boolean isGenerated = false;
+
+int moveOrder[];
+int autoSolveAmount;
 
 Langelis lenta[][];
 Player player;
@@ -65,6 +68,9 @@ void draw() {
     textSize(distanceFromEdge*0.75);
     text("Gems left: " + player.gemsLeft, distanceFromEdge, distanceFromEdge-1);
     text("Moves taken: " + player.moves, distanceFromEdge, height-distanceFromEdge*0.25);
+    if (autoSolveAmount > 0) {
+     text(moveOrder[autoSolveAmount-1], distanceFromEdge+squareSize*5, distanceFromEdge-1); 
+    }
 
     if (!player.isAlive) {   // jei negyvas
       text("Press R to restart", width-distanceFromEdge-120/(20/distanceFromEdge), distanceFromEdge-1);
@@ -86,40 +92,64 @@ void keyPressed () {  // numpad PLS
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(-1, 1);
       }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 1) {
+         autoSolveAmount--;
+      }
       break;
     case '2': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(0, 1);
+      }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 2) {
+         autoSolveAmount--;
       }
       break;
     case '3': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(1, 1);
       }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 3) {
+         autoSolveAmount--;
+      }
       break;
     case '4':
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(-1, 0);
+      }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 4) {
+         autoSolveAmount--;
       }
       break;
     case '6': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(1, 0);
       }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 6) {
+         autoSolveAmount--;
+      }
       break;
     case '7': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(-1, -1);
+      }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 7) {
+         autoSolveAmount--;
       }
       break;
     case '8': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(0, -1);
       }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 8) {
+         autoSolveAmount--;
+      }
       break;
     case '9': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(1, -1);
+      }
+      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 9) {
+         autoSolveAmount--;
       }
       break;
     case 'R': 
@@ -127,6 +157,12 @@ void keyPressed () {  // numpad PLS
       break; 
     case 'r': 
       generateLevel(); 
+      break;
+    case 'S':
+      autoSolveAmount = autoSolve(player);
+      break;
+    case 's': 
+      autoSolveAmount = autoSolve(player);
       break;
     default: 
       break;

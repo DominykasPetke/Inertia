@@ -1,4 +1,4 @@
-class Player { //<>// //<>//
+class Player { //<>//
   int x, y;
   int gemsLeft;
   int moves;
@@ -18,6 +18,14 @@ class Player { //<>// //<>//
 
     isAlive = true;     // pradzioje gyvi
     moves = 0;
+  }
+
+  Player(Player another) {
+    x = another.x;
+    y = another.y;
+    gemsLeft = another.gemsLeft;
+    moves = another.moves;
+    isAlive = another.isAlive;
   }
 
   void draw() {   // piesiam zaideja
