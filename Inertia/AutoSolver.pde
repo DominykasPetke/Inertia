@@ -1,5 +1,5 @@
-int autoSolve(Player start) { //<>// //<>// //<>// //<>//
-  int size = sizeX*sizeY*4; //<>//
+int autoSolve(Player start) { //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+  int size = sizeX*sizeY*player.gemsLeft*2;
   Player[] queue = new Player[size];
   int[] from = new int [size];
   int[] direction = new int [size];
@@ -19,16 +19,11 @@ int autoSolve(Player start) { //<>// //<>// //<>// //<>//
     }
   }
 
-  boolean[][] isCollected = new boolean[size][gemCount]; //<>//
+  boolean[][] isCollected = new boolean[size][gemCount];
 
   while (members > current) {
     if (queue[current].gemsLeft == 0) {
-      int amount = 0;
-      moveOrder = new int [current];
-
-      while (current > 0) {
-        moveOrder[amount] = direction[current];
-        amount++;
+      while (from[current] > 0) {
         current = from[current];
       }
 
@@ -36,11 +31,11 @@ int autoSolve(Player start) { //<>// //<>// //<>// //<>//
         lenta[gemList[i][0]][gemList[i][1]].type = 1;
       }
 
-      return amount; //<>//
+      return direction[current];
     }
 
     for (int i = 1; i < 10; i++) {
-      Player orig = new Player(queue[current]); //<>//
+      Player orig = new Player(queue[current]);
 
       switch(i) {
       case 1: 
@@ -71,7 +66,7 @@ int autoSolve(Player start) { //<>// //<>// //<>// //<>//
       default: 
         break;
       }
- //<>//
+
       if (queue[current].isAlive) {
         int where = whereInQueue(queue[current], queue, members, current);
 
@@ -82,10 +77,11 @@ int autoSolve(Player start) { //<>// //<>// //<>// //<>//
               from[where] = current;
               direction[where] = i;
 
-              while (queue[where-1].gemsLeft > queue[where].gemsLeft || queue[where-1].moves > queue[where].moves) {
+              while (where - 1 != current && queue[where-1].gemsLeft > queue[where].gemsLeft || queue[where-1].moves > queue[where].moves) {
                 moveBack(queue[where], queue, where);
                 moveBack(from[where], from, where);
                 moveBack(direction[where], direction, where);
+                moveBack(isCollected[where], isCollected, where);
                 where--;
               }
 
@@ -102,22 +98,31 @@ int autoSolve(Player start) { //<>// //<>// //<>// //<>//
 
             int curPos = members;
 
-            while (curPos - 1 != current && (queue[curPos-1].gemsLeft > queue[curPos].gemsLeft || queue[curPos-1].moves > queue[curPos].moves)) {
+            while (queue[curPos-1].gemsLeft > queue[curPos].gemsLeft) {
               moveBack(queue[curPos], queue, curPos);
               moveBack(from[curPos], from, curPos);
               moveBack(direction[curPos], direction, curPos);
+              moveBack(isCollected[curPos], isCollected, curPos);
+              curPos--;
+            }
+
+            while (queue[curPos-1].gemsLeft >= queue[curPos].gemsLeft && queue[curPos-1].moves > queue[curPos].moves) {
+              moveBack(queue[curPos], queue, curPos);
+              moveBack(from[curPos], from, curPos);
+              moveBack(direction[curPos], direction, curPos);
+              moveBack(isCollected[curPos], isCollected, curPos);
               curPos--;
             }
 
             for (int j = 0; j < gemCount; j++) {
               if (lenta[gemList[j][0]][gemList[j][1]].type != 1) {
-                isCollected[members][j] = true;
+                isCollected[curPos][j] = true;
               }
-            } //<>//
+            }
 
             members++;
           }
-        } else if (queue[current].x != orig.x || queue[current].y != orig.y) { //<>//
+        } else if (queue[current].x != orig.x || queue[current].y != orig.y) {
           queue[members] = new Player(queue[current]);
           from[members] = current;
           direction[members] = i;
@@ -125,20 +130,21 @@ int autoSolve(Player start) { //<>// //<>// //<>// //<>//
           int curPos = members;
 
           while (curPos - 1 != current && (queue[curPos-1].gemsLeft > queue[curPos].gemsLeft || queue[curPos-1].moves > queue[curPos].moves)) {
-            moveBack(queue[curPos], queue, curPos); //<>//
+            moveBack(queue[curPos], queue, curPos);
             moveBack(from[curPos], from, curPos);
             moveBack(direction[curPos], direction, curPos);
+            moveBack(isCollected[curPos], isCollected, curPos);
             curPos--;
           }
 
-          for (int j = 0; j < gemCount; j++) {
+          for (int j = 0; j < gemCount; j++) { //<>//
             if (lenta[gemList[j][0]][gemList[j][1]].type != 1) {
-              isCollected[members][j] = true;
+              isCollected[curPos][j] = true;
             }
           }
 
           members++;
-        } //<>//
+        }
       }
 
       for (int j = 0; j < gemCount; j++) {
@@ -149,7 +155,7 @@ int autoSolve(Player start) { //<>// //<>// //<>// //<>//
         }
       }
 
-      queue[current] = new Player(orig); //<>//
+      queue[current] = new Player(orig);
     }
     current++;
   }
@@ -187,6 +193,6 @@ void moveBack(boolean[] what, boolean where[][], int pos) {
 void moveBack(Player what, Player where[], int pos) {
   pos--;
   Player temp = new Player (where[pos]);
-  where[pos] = what;
-  where[pos+1] = temp;
+  where[pos] = new Player (what);
+  where[pos+1] = new Player (temp);
 }

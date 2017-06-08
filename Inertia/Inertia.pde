@@ -9,8 +9,8 @@ int distanceFromEdge;
 color backgroundColor = color(200);
 boolean isGenerated = false;
 
-int moveOrder[];
-int autoSolveAmount;
+int nextMove;
+int hintsUsed;
 
 Langelis lenta[][];
 Player player;
@@ -68,8 +68,10 @@ void draw() {
     textSize(distanceFromEdge*0.75);
     text("Gems left: " + player.gemsLeft, distanceFromEdge, distanceFromEdge-1);
     text("Moves taken: " + player.moves, distanceFromEdge, height-distanceFromEdge*0.25);
-    if (autoSolveAmount > 0) {
-     text(moveOrder[autoSolveAmount-1], distanceFromEdge+squareSize*5, distanceFromEdge-1); 
+    if (nextMove > 0) {
+      text("Next move: " + nextMove, width-distanceFromEdge-90/(20/distanceFromEdge), height-distanceFromEdge*0.25);
+    } else if (nextMove == -2) {
+      text("Level is unsolvable.", width-distanceFromEdge-130/(20/distanceFromEdge), height-distanceFromEdge*0.25);
     }
 
     if (!player.isAlive) {   // jei negyvas
@@ -80,7 +82,7 @@ void draw() {
     } else if (player.gemsLeft == 0) {   // jei laimejom
       background(0, 255, 0);
       textSize(14);
-      text("You win!\nBoard size: " + sizeX + "x" + sizeY +"\nMoves made: " + player.moves + "\nPress R to play again", distanceFromEdge, distanceFromEdge);
+      text("You win!\nBoard size: " + sizeX + "x" + sizeY +"\nMoves made: " + player.moves + "\nHints used: " + hintsUsed + "\nPress R to play again", distanceFromEdge, distanceFromEdge);
     }
   }
 }
@@ -92,65 +94,49 @@ void keyPressed () {  // numpad PLS
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(-1, 1);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 1) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case '2': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(0, 1);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 2) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case '3': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(1, 1);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 3) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case '4':
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(-1, 0);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 4) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case '6': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(1, 0);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 6) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case '7': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(-1, -1);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 7) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case '8': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(0, -1);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 8) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case '9': 
       if (player.isAlive && player.gemsLeft != 0) {
         player.move(1, -1);
       }
-      if (autoSolveAmount > 0 && moveOrder[autoSolveAmount-1] == 9) {
-         autoSolveAmount--;
-      }
+      nextMove = -1;
       break;
     case 'R': 
       generateLevel();
@@ -159,10 +145,22 @@ void keyPressed () {  // numpad PLS
       generateLevel(); 
       break;
     case 'S':
-      autoSolveAmount = autoSolve(player);
+      try {
+        nextMove = autoSolve(player);
+      } 
+      catch (ArrayIndexOutOfBoundsException exception) {
+        nextMove = -2;
+        player.isAlive = false;
+      }
       break;
     case 's': 
-      autoSolveAmount = autoSolve(player);
+      try {
+        nextMove = autoSolve(player);
+      } 
+      catch (ArrayIndexOutOfBoundsException exception) {
+        nextMove = -2;
+        player.isAlive = false;
+      }
       break;
     default: 
       break;

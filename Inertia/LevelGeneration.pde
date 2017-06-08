@@ -37,6 +37,7 @@ void generateLevel() { //<>//
     }
   }
 
+  hintsUsed = 0;
   isGenerated = true;
 }
 
